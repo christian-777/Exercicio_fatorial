@@ -1,22 +1,30 @@
-﻿internal class Program
+﻿using System.Collections.Concurrent;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
         //fatorial
 
-        int num;
-        double fat = 1;
+        int num, resposta;
 
-        Console.WriteLine("digite o numero para o fatorial: ");
+        Console.WriteLine("informe o valor: ");
         num = int.Parse(Console.ReadLine());
 
+        resposta = fat(num);
+        Console.WriteLine("o fatorial de " + num + " eh: " + resposta);
 
-        for (int i = num; i > 0; i--)
+
+        int fat(int valor)
         {
-            Console.WriteLine(fat + " * " + i);
-            fat = fat * i;
+            if (valor == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return (valor * fat(valor - 1));
+            }
         }
-
-        Console.WriteLine("fatorial: " + fat);
     }
 }
